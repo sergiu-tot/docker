@@ -1,0 +1,22 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/code
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+  php:
+    image: sergiutot/phpfixed:v1.0
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/code
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Sup3Rp4sS
+
